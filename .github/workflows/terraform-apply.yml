@@ -26,10 +26,10 @@ jobs:
         uses: hashicorp/setup-terraform@v2
       - name: Run Terraform Init
         run: terraform init
-        working-directory: ${{ github.workspace }}/iac/terraform
+        working-directory: ${{ github.workspace }}/kubernetes
       - name: Run Terraform Plan
         run: terraform plan
-        working-directory: ${{ github.workspace }}/iac/terraform
+        working-directory: ${{ github.workspace }}/kubernetes
         env:
           TF_VAR_GCP_PROJECT_ID: ${{ vars.GCP_PROJECT_ID }}
   infra-apply:
@@ -54,9 +54,9 @@ jobs:
         uses: hashicorp/setup-terraform@v2
       - name: Run Terraform Init
         run: terraform init
-        working-directory: ${{ github.workspace }}/iac/terraform
+        working-directory: ${{ github.workspace }}/kubernetes
       - name: Run Terraform Apply
         run: terraform apply -auto-approve
-        working-directory: ${{ github.workspace }}/iac/terraform
+        working-directory: ${{ github.workspace }}/kubernetes
         env:
           TF_VAR_GCP_PROJECT_ID: ${{ vars.GCP_PROJECT_ID }}
