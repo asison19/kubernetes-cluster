@@ -1,11 +1,11 @@
 # TODO turn this into a reusable action/module
-name: 'Terraform Apply'
-run-name: 'Terraform Apply'
+name: 'Infrastructure Deploy'
+run-name: 'Infrastructure Deploy'
 on: workflow_dispatch 
 env:
   CONFIG_DIRECTORY: "./"
 jobs:
-  infra-plan:
+  terraform-plan:
     environment: prod
     permissions:
       contents: 'read'
@@ -32,8 +32,8 @@ jobs:
         working-directory: ${{ github.workspace }}/kubernetes
         env:
           TF_VAR_GCP_PROJECT_ID: ${{ vars.GCP_PROJECT_ID }}
-  infra-apply:
-    needs: infra-plan
+  terraform-apply:
+    needs: terraform-plan
     environment: prod
     permissions:
       contents: 'read'
