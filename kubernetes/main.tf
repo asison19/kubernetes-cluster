@@ -23,7 +23,7 @@ resource "google_container_node_pool" "primary" {
 
   node_config {
     spot         = true
-    machine_type = "e2-small" # TODO create custom machine type?
+    machine_type = "e2-micro" # TODO create custom machine type?
 
     # Google recommends custom service accounts that have cloud-platform scope and permissions granted via IAM Roles.
     service_account = google_service_account.default.email
