@@ -11,6 +11,8 @@ resource "google_container_cluster" "primary" {
 
   location = "us-central1-a"
 
+  deletion_protection = false
+
   #network    = google_compute_network.default.id
   #subnetwork = google_compute_subnetwork.default.id
 }
